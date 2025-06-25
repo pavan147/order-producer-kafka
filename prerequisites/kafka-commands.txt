@@ -1,0 +1,20 @@
+start zookeeper :
+	.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+Start kafka :
+	.\bin\windows\kafka-server.bat .\config\server.properties
+	 OR
+	 .\bin\windows\kafka-server-start.bat .\config\server.properties
+Consumer :
+	kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic product-created-events-topic --from-beginning --property print.key=true --property key.separator=:
+	OR
+	.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic product-created-events-topic1 --from-beginning --property print.key=true --property key.separator=:
+Producer :
+	kafka-console-producer.bat --broker-list localhost:9092 --topic product-created-events-topic1 --property "parse.key=true" --property "key.separator=:"
+DLQ.Cnsumer :
+	kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic product-created-events-topic1.DLT --from-beginning --property print.key=true --property key.separator=:
+
+--------------------------------
+IMP Command :
+Kill port :
+	netstat -ano | findstr :9092
+	taskkill /PID 37928 /F
