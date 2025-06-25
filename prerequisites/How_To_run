@@ -1,0 +1,9 @@
+producer : order-producer-kafka
+consumer : sent-notification-consumer-kafka
+
+Step1:
+    run zookeeper and kafka server else run by kraft download higher version
+Step2:
+    Run both services
+        producer : order-producer-kafka
+        consumer : sent-notification-consumer-kafka
